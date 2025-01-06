@@ -28,5 +28,21 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+    rules: {
+      "import/order": [
+        "error",
+        {
+          groups: [
+            ["builtin", "external"], // Node.js and external libraries
+            ["internal"], // Aliased paths
+            ["parent", "sibling", "index"], // Relative imports
+            ["object", "type"], // Object and type imports
+          ],
+          "newlines-between": "always",
+        },
+      ],
+      "simple-import-sort/imports": "error", // Auto-sort imports
+      "simple-import-sort/exports": "error", // Auto-sort exports
+    },
   },
 );
