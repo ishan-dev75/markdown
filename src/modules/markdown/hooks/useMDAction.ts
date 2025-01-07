@@ -1,9 +1,12 @@
 import { useMemo, useRef, useState } from "react";
 import { parseMarkdown } from "../utils/markdownParser";
 import { withConfirmation } from "../../../utils/helper";
+import { COMMON_MESSAGES } from "../constant";
 
 const useMDAction = (initialText: string) => {
   const [markdownText, setMarkdownText] = useState<string>(initialText);
+  const [isFileuploadModalOpen, setIsFileuploadModalOpen] =
+    useState<boolean>(false);
   const isChangeDetectRef = useRef<boolean>(false); //* For ask user confirmation before uploading new file
 
   //* Memoize the parsed Markdown to optimize performance and avoid re-renders
@@ -27,21 +30,35 @@ const useMDAction = (initialText: string) => {
     isChangeDetectRef.current = false; //* Reset change detect
   };
 
-  const onFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+  const onFileUpload = async (file: File) => {
     if (file) {
       const text = await file.text();
       setMarkdownText(text);
       isChangeDetectRef.current = false;
+      toggleFileUploadModal();
     } else {
       alert("Please upload a valid file!");
     }
   };
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) =>
+  const handleFileUpload = (files: File[]) => {
+    if (files.length === 1) {
+      const file = files[0];
+      onFileUpload(file);
+    } else {
+      window.alert(COMMON_MESSAGES.ALLOW_ONE_FILE);
+    }
+  };
+
+  const toggleFileUploadModal = () => {
+    setIsFileuploadModalOpen((prev) => !prev);
+  };
+
+  const openModalWithConfirmation = () => {
     isChangeDetectRef.current
-      ? withConfirmation(async () => await onFileUpload(event))
-      : onFileUpload(event);
+      ? withConfirmation(() => toggleFileUploadModal())
+      : toggleFileUploadModal();
+  };
 
   return {
     handleDownload,
@@ -49,6 +66,9 @@ const useMDAction = (initialText: string) => {
     handleChange,
     markdownText,
     handleFileUpload,
+    toggleFileUploadModal,
+    isFileuploadModalOpen,
+    openModalWithConfirmation,
   };
 };
 

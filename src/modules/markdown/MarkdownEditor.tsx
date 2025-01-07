@@ -1,32 +1,27 @@
 import React from "react";
 import { MarkdownInput, MarkDownPreview } from "./components";
-import { MDBox, MDIconButton, VisuallyHiddenInput } from "../../components/mui";
+import { MDBox, MDIconButton } from "../../components/mui";
 import { IconComponent } from "../../components/icons";
-import { styled } from "@mui/material";
 import useMDAction from "./hooks/useMDAction";
+import ActionBox from "./components/ActionBox";
+import { FileUploadModal } from "../../components";
 
 type MarkdownEditorProps = {
   initialText: string;
 };
 
-const ActionBox = styled(MDBox)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "end",
-  gap: theme.spacing(2),
-  backgroundColor: "#f5f5f5",
-  padding: theme.spacing(1),
-  position: "sticky",
-  top: 0,
-}));
-
 const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
   const height = `calc(100% - 55px)`; //TODO: Fix height issue
+
   const {
     handleChange,
     handleDownload,
     renderedMarkdown,
     markdownText,
     handleFileUpload,
+    isFileuploadModalOpen,
+    toggleFileUploadModal,
+    openModalWithConfirmation,
   } = useMDAction(initialText);
 
   return (
@@ -43,15 +38,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
           <MDIconButton
             title="Upload File"
             size="small"
-            component="label"
-            role={undefined}
+            onClick={openModalWithConfirmation}
           >
             <IconComponent type="upload" />
-            <VisuallyHiddenInput
-              type="file"
-              accept=".md"
-              onChange={handleFileUpload}
-            />
           </MDIconButton>
           <MDIconButton
             title="Download File"
@@ -82,6 +71,13 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
         </ActionBox>
         <MarkDownPreview content={renderedMarkdown} />
       </MDBox>
+
+      <FileUploadModal
+        open={isFileuploadModalOpen}
+        onClose={toggleFileUploadModal}
+        onFileUpload={handleFileUpload}
+        accept={{ "text/markdown": [".md"] }}
+      />
     </MDBox>
   );
 };

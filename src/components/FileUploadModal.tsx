@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
-import { Modal, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { styled } from "@mui/system";
 import { useDropzone, DropzoneOptions, Accept } from "react-dropzone";
 import { Upload as UploadIcon, Close as CloseIcon } from "@mui/icons-material";
-import { MDBox, MDTypography } from "./mui";
+import { MDBox, MDModal, MDTypography } from "./mui";
 
 const UploadBox = styled(MDBox)(({ theme }) => ({
   border: `2px dashed ${theme.palette.primary.main}`,
@@ -48,7 +48,7 @@ const FileUploadModal: React.FC<Props> = ({
 
   return (
     <>
-      <Modal
+      <MDModal
         open={open}
         onClose={handleClose}
         aria-labelledby="upload-modal-title"
@@ -89,7 +89,7 @@ const FileUploadModal: React.FC<Props> = ({
             </MDTypography>
           </UploadBox>
         </MDBox>
-      </Modal>
+      </MDModal>
     </>
   );
 };
