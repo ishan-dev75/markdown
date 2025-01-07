@@ -26,8 +26,6 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
     isPreviewOpen,
   } = useMDAction(initialText);
 
-  console.log("isPreviewOpen", isPreviewOpen);
-
   return (
     <MDBox sx={{ display: "flex", height: "100%" }}>
       <MDBox
