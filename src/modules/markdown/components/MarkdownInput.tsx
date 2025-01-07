@@ -15,7 +15,9 @@ const MarkdownInput: React.FC<MarkdownInputProps> = ({ value, onChange }) => {
           width: "100%",
           height: "100%",
           padding: "10px",
-          resize: 'none'
+          resize: 'none',
+          border: 0,
+          outline: 0,
         },
       }}
     >
