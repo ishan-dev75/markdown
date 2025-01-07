@@ -1,6 +1,6 @@
 import React from "react";
 import { MarkdownInput, MarkDownPreview } from "./components";
-import { MDBox, MDIconButton } from "../../components/mui";
+import { MDBox, MDIconButton, VisuallyHiddenInput } from "../../components/mui";
 import { IconComponent } from "../../components/icons";
 import { styled } from "@mui/material";
 import useMDAction from "./hooks/useMDAction";
@@ -21,8 +21,13 @@ const ActionBox = styled(MDBox)(({ theme }) => ({
 
 const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
   const height = `calc(100% - 55px)`; //TODO: Fix height issue
-  const { handleChange, handleDownload, renderedMarkdown, markdownText } =
-    useMDAction(initialText);
+  const {
+    handleChange,
+    handleDownload,
+    renderedMarkdown,
+    markdownText,
+    handleFileUpload,
+  } = useMDAction(initialText);
 
   return (
     <MDBox sx={{ display: "flex", height: "100%" }}>
@@ -35,8 +40,18 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
         }}
       >
         <ActionBox>
-          <MDIconButton title="Upload File" size="small">
+          <MDIconButton
+            title="Upload File"
+            size="small"
+            component="label"
+            role={undefined}
+          >
             <IconComponent type="upload" />
+            <VisuallyHiddenInput
+              type="file"
+              accept=".md"
+              onChange={handleFileUpload}
+            />
           </MDIconButton>
           <MDIconButton
             title="Download File"
