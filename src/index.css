@@ -1,0 +1,7 @@
+.md_preview pre:has(code) {
+    background-color: #f5f5f5;
+    overflow-wrap: break-word;
+    white-space: break-spaces;
+    padding: 20px;
+    border-radius: 10px;
+}
