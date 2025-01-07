@@ -7,6 +7,8 @@ const useMDAction = (initialText: string) => {
   const [markdownText, setMarkdownText] = useState<string>(initialText);
   const [isFileuploadModalOpen, setIsFileuploadModalOpen] =
     useState<boolean>(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState<boolean>(false);
+  useState<boolean>(false);
   const isChangeDetectRef = useRef<boolean>(false); //* For ask user confirmation before uploading new file
 
   //* Memoize the parsed Markdown to optimize performance and avoid re-renders
@@ -60,6 +62,10 @@ const useMDAction = (initialText: string) => {
       : toggleFileUploadModal();
   };
 
+  const togglePreview = () => {
+    setIsPreviewOpen((prev) => !prev);
+  };
+
   return {
     handleDownload,
     renderedMarkdown,
@@ -69,6 +75,8 @@ const useMDAction = (initialText: string) => {
     toggleFileUploadModal,
     isFileuploadModalOpen,
     openModalWithConfirmation,
+    togglePreview,
+    isPreviewOpen,
   };
 };
 

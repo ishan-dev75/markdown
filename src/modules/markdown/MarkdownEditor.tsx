@@ -22,13 +22,18 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
     isFileuploadModalOpen,
     toggleFileUploadModal,
     openModalWithConfirmation,
+    togglePreview,
+    isPreviewOpen,
   } = useMDAction(initialText);
+
+  console.log("isPreviewOpen", isPreviewOpen);
 
   return (
     <MDBox sx={{ display: "flex", height: "100%" }}>
       <MDBox
         sx={{
-          width: "50%",
+          width: isPreviewOpen ? "0px" : "50%",
+          visibility: isPreviewOpen ? "hidden" : "visible",
           position: "relative",
           height: height,
           p: 2,
@@ -55,8 +60,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
 
       <MDBox
         sx={{
-          width: "50%",
+          width: isPreviewOpen ? "100%" : "50%",
           borderLeft: "1px solid #ddd",
+          transition: "all ease 300ms",
           position: "relative",
           overflow: "auto",
           height: "100%",
@@ -64,8 +70,12 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
         }}
       >
         <ActionBox>
-          <MDIconButton title="Preview File" size="small">
-            <IconComponent type="preview" />
+          <MDIconButton
+            title="Preview File"
+            size="small"
+            onClick={togglePreview}
+          >
+            <IconComponent type={isPreviewOpen ? "closeEye" : "openEye"} />
           </MDIconButton>
         </ActionBox>
         <MDBox sx={{ height: height, overflow: "auto", pr: 1 }}>
