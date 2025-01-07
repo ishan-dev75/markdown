@@ -6,7 +6,7 @@ This project uses **Vite** and requires **Node.js v20** or higher.
 
 - Ensure you have **Node.js v20+** installed. You can check your Node.js version with:
 ```bash
-  node -v
+node -v
 ```
 
 - Start the Development Server

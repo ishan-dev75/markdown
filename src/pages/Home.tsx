@@ -1,17 +1,17 @@
 import React from "react";
-import { MDTypography } from "../components/mui";
 import MasterLayout from "../layout";
+import MarkdownEditor from "../modules/markdown/MarkdownEditor";
 
-const HomePage: React.FC = () => {
+const MarkdownPlayground: React.FC = () => {
+  
+  const initialText =
+    "# Hello Markdown!\nThis is **bold** and this is *italic*.";
+
   return (
-    // <main style={{ padding: "1rem" }}>
-    //   <MDTypography variant="h4">Welcome to My App</MDTypography>
-    //   <MDTypography>
-    //     Toggle the theme using the switch or the icon in the App Bar!
-    //   </MDTypography>
-    // </main>
-    <MasterLayout></MasterLayout>
+    <MasterLayout>
+      <MarkdownEditor initialText={initialText} />
+    </MasterLayout>
   );
 };
 
-export default HomePage;
+export default MarkdownPlayground;
