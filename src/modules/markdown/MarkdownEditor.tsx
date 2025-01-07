@@ -11,7 +11,7 @@ type MarkdownEditorProps = {
 };
 
 const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
-  const height = `calc(100% - 55px)`; //TODO: Fix height issue
+  const height = `calc(100% - 55px)`;
 
   const {
     handleChange,
@@ -29,9 +29,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
       <MDBox
         sx={{
           width: "50%",
-          margin: "10px",
           position: "relative",
           height: height,
+          p: 2,
         }}
       >
         <ActionBox>
@@ -58,10 +58,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
           width: "50%",
           borderLeft: "1px solid #ddd",
           position: "relative",
-          overflowY: "auto",
-          margin: "10px 0",
-          padding: "0 10px",
-          height: height,
+          overflow: "auto",
+          height: "100%",
+          p: 2,
         }}
       >
         <ActionBox>
@@ -69,7 +68,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
             <IconComponent type="preview" />
           </MDIconButton>
         </ActionBox>
-        <MarkDownPreview content={renderedMarkdown} />
+        <MDBox sx={{ height: height, overflow: "auto", pr: 1 }}>
+          <MarkDownPreview content={renderedMarkdown} />
+        </MDBox>
       </MDBox>
 
       <FileUploadModal
