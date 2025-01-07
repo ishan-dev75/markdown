@@ -1,5 +1,7 @@
 import React from "react";
 import { MDBox } from "../../../components/mui";
+import useDarkMode from "../../../theme/useDarkMode";
+import { Typography, useTheme } from "@mui/material";
 
 export interface MarkdownInputProps {
   value: string;
@@ -7,21 +9,29 @@ export interface MarkdownInputProps {
 }
 
 const MarkdownInput: React.FC<MarkdownInputProps> = ({ value, onChange }) => {
+  const theme = useTheme();
+  const { isDarkMode } = useDarkMode();
+
   return (
     <MDBox
       sx={{
-        height: '100%',
+        height: "100%",
         "& .md-input": {
           width: "100%",
           height: "100%",
           padding: "10px",
-          resize: 'none',
+          resize: "none",
           border: 0,
           outline: 0,
+          backgroundColor: isDarkMode
+            ? theme.palette.grey[900]
+            : theme.palette.grey[100],
+          color: theme.palette.text.primary,
         },
       }}
     >
-      <textarea
+      <Typography
+        component="textarea"
         value={value}
         onChange={onChange}
         className="md-input"

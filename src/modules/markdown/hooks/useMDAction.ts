@@ -23,13 +23,15 @@ const useMDAction = (initialText: string) => {
   };
 
   const handleDownload = (markdownText: string) => {
-    const blob = new Blob([markdownText], { type: "text/markdown" });
+    if (markdownText) {
+      const blob = new Blob([markdownText], { type: "text/markdown" });
 
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "markdown-content.md"; //TODO : Add dynamic name
-    link.click();
-    isChangeDetectRef.current = false; //* Reset change detect
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "markdown-content.md"; //TODO : Add dynamic name
+      link.click();
+      isChangeDetectRef.current = false; //* Reset change detect
+    }
   };
 
   const onFileUpload = async (file: File) => {
@@ -57,7 +59,7 @@ const useMDAction = (initialText: string) => {
   };
 
   const openModalWithConfirmation = () => {
-    isChangeDetectRef.current
+    isChangeDetectRef.current && markdownText
       ? withConfirmation(() => toggleFileUploadModal())
       : toggleFileUploadModal();
   };

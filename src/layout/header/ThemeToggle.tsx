@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { MDIconButton, MDToggleSwitch } from "../../components/mui";
+import { MDIconButton } from "../../components/mui";
+import LocalStorageService, { LocalStorageKeys } from "../../service/sotrage";
 
-type ThemeToggleProps = {
-  isDarkMode: boolean;
-  onToggle: () => void;
-};
+const ThemeToggle: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDarkMode, onToggle }) => {
+  const onToggle = () => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(() => newMode);
+    LocalStorageService.setItem(
+      LocalStorageKeys.isDarkMode,
+      newMode.toString(),
+    );
+    window.dispatchEvent(new Event('storage'))
+  };
+
   return (
     <>
       <MDIconButton color="inherit" onClick={onToggle}>
         {isDarkMode ? <Brightness7 /> : <Brightness4 />}
       </MDIconButton>
-      <MDToggleSwitch checked={isDarkMode} onChange={onToggle} />
     </>
   );
 };

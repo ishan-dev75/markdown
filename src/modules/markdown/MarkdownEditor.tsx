@@ -5,6 +5,8 @@ import { IconComponent } from "../../components/icons";
 import useMDAction from "./hooks/useMDAction";
 import ActionBox from "./components/ActionBox";
 import { FileUploadModal } from "../../components";
+import { useTheme } from "@mui/material";
+import useDarkMode from "../../theme/useDarkMode";
 
 type MarkdownEditorProps = {
   initialText: string;
@@ -26,6 +28,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
     isPreviewOpen,
   } = useMDAction(initialText);
 
+  const theme = useTheme();
+  const { isDarkMode } = useDarkMode();
+
   return (
     <MDBox sx={{ display: "flex", height: "100%" }}>
       <MDBox
@@ -37,7 +42,13 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
           p: 2,
         }}
       >
-        <ActionBox>
+        <ActionBox
+          sx={{
+            backgroundColor: isDarkMode
+              ? theme.palette.grey[800]
+              : theme.palette.grey[200],
+          }}
+        >
           <MDIconButton
             title="Upload File"
             size="small"
@@ -67,7 +78,13 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ initialText }) => {
           p: 2,
         }}
       >
-        <ActionBox>
+        <ActionBox
+          sx={{
+            backgroundColor: isDarkMode
+              ? theme.palette.grey[800]
+              : theme.palette.grey[200],
+          }}
+        >
           <MDIconButton
             title="Preview File"
             size="small"
