@@ -29,7 +29,7 @@ How to Use: Add or modify only the most frequently used MUI components in the co
 2. Add `components` and `utils` etc (if needed) to organize the feature's code.
 3. Update the `ThemeProvider` or constants in the `theme` folder if the feature requires additional theming.
 
-## Folder Structure
+## Folder Structure (example)
 ```bash
 public
 src
@@ -38,18 +38,17 @@ src
 │   └── mui
 │       └── index.ts
 ├── layout
-│   ├── components
+│   ├── header
 │   │   └── Header.tsx
 │   └── index.tsx
 ├── modules
 │   └── markdown
-│       ├── components
-│       └── utils
-│           └── MarkdownEditor.tsx
+│       └──components
 ├── pages
 │   └── Home.tsx
 ├── theme
-│   └── ThemeProvider.tsx
+│   └── constants.tsx
+│   └── theme.tsx
+│    └── ThemeProvider.tsx
 └── util
-
 ```
