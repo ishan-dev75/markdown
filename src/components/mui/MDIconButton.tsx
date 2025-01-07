@@ -1,9 +1,9 @@
 import React from "react";
 import { IconButton, IconButtonProps } from "@mui/material";
 
-export interface MDIconButton extends IconButtonProps {}
+export interface MDIconButtonProps extends IconButtonProps {}
 
-const MDIconButton: React.FC<MDIconButton> = (props) => {
+const MDIconButton: React.FC<MDIconButtonProps> = (props) => {
   return <IconButton {...props} />;
 };
 
