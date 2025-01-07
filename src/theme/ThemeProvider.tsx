@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import {
-  createTheme,
-  ThemeProvider as MuiThemeProvider,
-  CssBaseline,
-} from "@mui/material";
+import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
+import { createCustomTheme } from "./theme";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -12,12 +9,7 @@ type ThemeProviderProps = {
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const theme = createTheme({
-    palette: {
-      mode: isDarkMode ? "dark" : "light",
-    },
-  });
-
+  const theme = createCustomTheme(isDarkMode);
   const toggleTheme = () => setIsDarkMode((prev) => !prev);
 
   return (
