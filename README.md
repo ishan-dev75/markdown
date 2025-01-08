@@ -5,11 +5,13 @@ This project uses **Vite** and requires **Node.js v20** or higher.
 ## Prerequisites
 
 - Ensure you have **Node.js v20+** installed. You can check your Node.js version with:
+
 ```bash
 node -v
 ```
 
 - Start the Development Server
+
 ```bash
 npm install
 npm run dev
@@ -30,6 +32,7 @@ How to Use: Add or modify only the most frequently used MUI components in the co
 3. Update the `ThemeProvider` or constants in the `theme` folder if the feature requires additional theming.
 
 ## Folder Structure (example)
+
 ```bash
 public
 src

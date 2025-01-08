@@ -23,7 +23,7 @@ const IconComponent: React.FC<IconComponentProps> = ({
   color = "inherit",
 }) => {
   const Icon = iconMap[type];
-  
+
   if (!Icon) {
     throw new Error(`Icon "${type}" not found in iconMap.`);
   }

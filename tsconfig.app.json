@@ -28,8 +28,8 @@
       "@modules/*": ["modules/*"],
       "@layout/*": ["layout/*"],
       "@theme/*": ["theme/*"],
-      "@service/*": ["service/*"],
-  }
+      "@service/*": ["service/*"]
+    }
   },
   "include": ["src"]
 }

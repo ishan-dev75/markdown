@@ -13,7 +13,7 @@ const ThemeToggle: React.FC = () => {
       LocalStorageKeys.isDarkMode,
       newMode.toString(),
     );
-    window.dispatchEvent(new Event('storage'))
+    window.dispatchEvent(new Event("storage"));
   };
 
   return (

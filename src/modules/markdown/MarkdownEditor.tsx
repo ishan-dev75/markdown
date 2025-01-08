@@ -9,7 +9,6 @@ import ActionBox from "./components/ActionBox";
 import useMDAction from "./hooks/useMDAction";
 import { MarkdownInput, MarkDownPreview } from "./components";
 
-
 type MarkdownEditorProps = {
   initialText: string;
 };

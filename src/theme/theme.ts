@@ -10,7 +10,7 @@ export const createCustomTheme = (isDarkMode: boolean) => {
       MuiAppBar: {
         styleOverrides: {
           root: {
-            height: THEME_CONST.APP_BAR_HEIGHT, 
+            height: THEME_CONST.APP_BAR_HEIGHT,
           },
         },
       },
