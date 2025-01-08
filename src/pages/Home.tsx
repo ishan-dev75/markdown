@@ -1,6 +1,6 @@
 import React from "react";
-import MasterLayout from "../layout";
-import MarkdownEditor from "../modules/markdown/MarkdownEditor";
+import MarkdownEditor from "@modules/markdown/MarkdownEditor";
+import MasterLayout from "@layout/index";
 
 const MarkdownPlayground: React.FC = () => {
   

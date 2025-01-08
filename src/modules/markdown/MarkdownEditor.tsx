@@ -1,12 +1,14 @@
 import React from "react";
-import { MarkdownInput, MarkDownPreview } from "./components";
-import { MDBox, MDIconButton } from "../../components/mui";
-import { IconComponent } from "../../components/icons";
-import useMDAction from "./hooks/useMDAction";
-import ActionBox from "./components/ActionBox";
-import { FileUploadModal } from "../../components";
 import { useTheme } from "@mui/material";
-import useDarkMode from "../../theme/useDarkMode";
+import useDarkMode from "@theme/useDarkMode";
+import FileUploadModal from "@components/FileUploadModal";
+import { MDBox, MDIconButton } from "@components/mui";
+import { IconComponent } from "@components/icons";
+
+import ActionBox from "./components/ActionBox";
+import useMDAction from "./hooks/useMDAction";
+import { MarkdownInput, MarkDownPreview } from "./components";
+
 
 type MarkdownEditorProps = {
   initialText: string;

@@ -1,7 +1,7 @@
 import React from "react";
-import { MDBox } from "../../../components/mui";
 import { useTheme } from "@mui/material";
-import useDarkMode from "../../../theme/useDarkMode";
+import useDarkMode from "@theme/useDarkMode";
+import { MDBox } from "@components/mui";
 
 interface Props {
   content: string | Promise<string>;

@@ -1,4 +1,4 @@
-import { COMMON_MESSAGES } from "../modules/markdown/constant";
+import { COMMON_MESSAGES } from "@modules/markdown/constant";
 
 type ConfirmationHandler = (...args: any[]) => void | Promise<void>;
 

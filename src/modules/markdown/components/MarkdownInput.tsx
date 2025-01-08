@@ -1,7 +1,7 @@
 import React from "react";
-import { MDBox } from "../../../components/mui";
-import useDarkMode from "../../../theme/useDarkMode";
 import { Typography, useTheme } from "@mui/material";
+import { MDBox } from "@components/mui";
+import useDarkMode from "@theme/useDarkMode";
 
 export interface MarkdownInputProps {
   value: string;

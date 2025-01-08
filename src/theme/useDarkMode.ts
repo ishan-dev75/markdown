@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import LocalStorageService, { LocalStorageKeys } from "../service/sotrage";
+import LocalStorageService, { LocalStorageKeys } from "@service/sotrage";
 
 const useDarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
