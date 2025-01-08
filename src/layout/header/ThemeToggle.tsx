@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { MDIconButton } from "../../components/mui";
-import LocalStorageService, { LocalStorageKeys } from "../../service/sotrage";
+import LocalStorageService, { LocalStorageKeys } from "@service/sotrage";
+import { MDIconButton } from "@components/mui";
+import { IconComponent } from "@components/icons";
 
 const ThemeToggle: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -19,7 +19,11 @@ const ThemeToggle: React.FC = () => {
   return (
     <>
       <MDIconButton color="inherit" onClick={onToggle}>
-        {isDarkMode ? <Brightness7 /> : <Brightness4 />}
+        {isDarkMode ? (
+          <IconComponent type="fullMoon" />
+        ) : (
+          <IconComponent type="halfMoon" />
+        )}
       </MDIconButton>
     </>
   );
